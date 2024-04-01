@@ -11,6 +11,12 @@ const envFromArgs = require('@joplin/lib/envFromArgs');
 const packageInfo = require('./packageInfo.js');
 const { isCallbackUrl } = require('@joplin/lib/callbackUrlUtils');
 const determineBaseAppDirs = require('@joplin/lib/determineBaseAppDirs').default;
+const { autoUpdater } = require('electron-updater');
+
+
+electronApp.on('ready', () => {
+	autoUpdater.checkForUpdatesAndNotify();
+});
 
 // Electron takes the application name from package.json `name` and
 // displays this in the tray icon toolip and message box titles, however in

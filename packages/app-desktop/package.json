@@ -15,7 +15,8 @@
     "test": "jest",
     "test-ui": "playwright test",
     "test-ci": "yarn test && sh ./integration-tests/run-ci.sh",
-    "renameReleaseAssets": "node tools/renameReleaseAssets.js"
+    "renameReleaseAssets": "node tools/renameReleaseAssets.js",
+    "publish": "electron-builder --p always"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,11 @@
     "url": "https://github.com/laurent22/joplin/issues"
   },
   "build": {
+    "publish": [{
+      "provider":"github",
+      "owner":"g0maa",
+      "repo":"joplin"
+    }],
     "appId": "net.cozic.joplin-desktop",
     "compression": "normal",
     "productName": "Joplin",
@@ -160,6 +166,7 @@
     "compare-versions": "6.1.0",
     "countable": "3.0.1",
     "debounce": "1.2.1",
+    "electron-updater": "6.1.8",
     "electron-window-state": "5.0.3",
     "formatcoords": "1.1.3",
     "fs-extra": "11.2.0",
